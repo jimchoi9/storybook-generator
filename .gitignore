@@ -1,0 +1,19 @@
+# Environment variables (API keys)
+.env
+.env.local
+
+# Storybook content folders
+storybook/
+
+# Dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# Audio output files (generated files, usually large)
+*/audio/
+output/
+
+# TypeScript build output
+dist/

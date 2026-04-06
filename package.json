@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.41.1",
+    "@runware/sdk-js": "^1.2.8",
+    "dotenv": "^17.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2"
+  }
+}
