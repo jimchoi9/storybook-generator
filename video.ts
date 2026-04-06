@@ -235,7 +235,7 @@ async function bulkCreateVideos() {
     console.error("❌ 폴더명을 입력해주세요. 예: npx tsx video.ts Marie_Curie");
     process.exit(1);
   }
-  const jsonPath = `./${folderName}/${folderName}_video.json`;
+  const jsonPath = `./storybook/${folderName}/video.json`;
   const tasks = await loadTasksFromJson(jsonPath);
 
   // 파일 존재 여부 사전 검증
@@ -247,8 +247,8 @@ async function bulkCreateVideos() {
   }
 
   // 폴더명 기반 출력 경로
-  const outputDir  = `./${folderName}/videos`;
-  const outputFile = `./${folderName}/results.json`;
+  const outputDir  = `./storybook/${folderName}/videos`;
+  const outputFile = `./storybook/${folderName}/results.json`;
   fs.mkdirSync(outputDir, { recursive: true });
 
   console.log(
