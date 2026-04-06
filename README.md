@@ -9,6 +9,7 @@
   - 생성 후 이미지 파일명은 1.jpeg, 2.jpeg ... 형식으로 storybook/{폴더이름}/images/ 폴더에 저장
 3. tts_generator.mts 이용해서 페이지별 MP3 생성
 4. video.ts 이용해서 페이지별 MP4 생성
+  - 영상들 확인하고 이상한 부분은 따로 직접 생성하는게 나을 수도 있음
 5. 업로드
 
 
