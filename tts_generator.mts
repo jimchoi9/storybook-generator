@@ -5,7 +5,8 @@ import "dotenv/config";
 
 // const VOICE_ID_EN = "JBFqnCBsd6RMkjVDRZzb"; // 영어 음성 (George)
 const VOICE_ID_EN = "flHkNRp1BlvT73UL6gyz"; // 영어 음성 Jessica Anne Bogart - Eloquent Villain
-const VOICE_ID_KO = "ksaI0TCD9BstzEzlxj4q";  // Seulki - Inviting
+const VOICE_ID_KO = "fAgkbajYljImBTPFR28u";  // Amytah - Friendly, Clear and Hollow
+// const VOICE_ID_KO = "ksaI0TCD9BstzEzlxj4q";  // Seulki - Inviting
 
 const storyName = process.argv[2];
 
@@ -35,12 +36,20 @@ mkdirSync(`storybook/${storyName}/audio`, { recursive: true });
 
 const elevenlabs = new ElevenLabsClient();
 
-const voiceSettings = {
-  stability: 0.3,        // 목소리 안정성 (0~1) | 낮을수록 감정 표현이 다양하고 생동감 있음, 높을수록 일관되고 차분함
-  similarityBoost: 0.75, // 원본 목소리 유사도 (0~1) | 높을수록 학습된 목소리에 가깝게 재현
-  style: 0.85,            // 스타일 과장 정도 (0~1) | 높을수록 더 극적이고 표현력 있는 나레이션 (v2 이상 모델만 지원)
-  speed: 0.7,            // 말하기 속도 (0.7~1.2) | 1.0이 기본, 낮을수록 천천히 또박또박
-  useSpeakerBoost: true, // 목소리 선명도 향상 여부 | true 시 고음질로 렌더링 (연산 비용 증가)
+const voiceSettingsKo = {
+  stability: 0.3,        // 목소리 안정성 (0~1)
+  similarityBoost: 1.0,  // 원본 목소리 유사도 (0~1)
+  style: 0.46,           // 스타일 과장 정도 (0~1)
+  speed: 0.9,            // 말하기 속도
+  useSpeakerBoost: true, // 목소리 선명도 향상
+};
+
+const voiceSettingsEn = {
+  stability: 0.5,
+  similarityBoost: 0.75,
+  style: 0.85,
+  speed: 0.7,
+  useSpeakerBoost: true,
 };
 
 let totalCharCount = 0;
@@ -61,7 +70,7 @@ for (let i = 0; i < tasks.length; i += CONCURRENCY) {
           modelId: key === "ko" ? "eleven_multilingual_v2" : "eleven_v3",
           outputFormat: "mp3_44100_128",
           languageCode: key === "ko" ? "ko" : "en",
-          voiceSettings,
+          voiceSettings: key === "ko" ? voiceSettingsKo : voiceSettingsEn,
         })
         .withRawResponse();
 
